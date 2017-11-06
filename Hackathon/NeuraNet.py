@@ -1,13 +1,19 @@
 
 
-# This code comes from a demo NN program from the YouTube video https://youtu.be/h3l4qz76JhQ. The program creates an neural network that simulates the exclusive OR function with two inputs and one output. 
+# This code comes from a demo NN program from the YouTube video https://youtu.be/h3l4qz76JhQ. The program creates an 
+# neural network that simulates the exclusive OR function with two inputs and one output. 
 
 
 import numpy as np  # Note: there is a typo on this line in the video
 
 
-# The following is a function definition of the sigmoid function, which is the type of non-linearity chosen for this neural net. It is not the only type of non-linearity that can be chosen, but is has nice analytical features and is easy to teach with. In practice, large-scale deep learning systems use piecewise-linear functions because they are much less expensive to evaluate. 
-# The implementation of this function does double duty. If the deriv=True flag is passed in, the function instead calculates the derivative of the function, which is used in the error backpropogation step. 
+# The following is a function definition of the sigmoid function, which is the type of non-linearity chosen for this 
+# neural net. It is not the only type of non-linearity that can be chosen, but is has nice analytical features and is 
+# easy to teach with. In practice, large-scale deep learning systems use piecewise-linear functions because they are much
+# less expensive to evaluate. 
+
+# The implementation of this function does double duty. If the deriv=True flag is passed in, the function instead 
+#calculates the derivative of the function, which is used in the error backpropogation step. 
 def nonlin(x, deriv=False):  # Note: there is a typo on this line in the video
 
     if(deriv==True):
@@ -17,7 +23,8 @@ def nonlin(x, deriv=False):  # Note: there is a typo on this line in the video
 
     return 1/(1+np.exp(-x))  # Note: there is a typo on this line in the video
 
-# The following code creates the input matrix. Although not mentioned in the video, the third column is for accommodating the bias term and is not part of the input. 
+# The following code creates the input matrix. Although not mentioned in the video, the third column is for 
+# accommodating the bias term and is not part of the input. 
 
 #input data
 X = np.array([[0,0,1],  # Note: there is a typo on this line in the video
@@ -42,13 +49,19 @@ y = np.array([[0],
              [0]])
 
 
-# The seed for the random generator is set so that it will return the same random numbers each time, which is sometimes useful for debugging.
+# The seed for the random generator is set so that it will return the same random numbers each time, which is sometimes 
+# useful for debugging.
 
 
 
 np.random.seed(1)
 
-# Now we intialize the weights to random values. syn0 are the weights between the input layer and the hidden layer.  It is a 3x4 matrix because there are two input weights plus a bias term (=3) and four nodes in the hidden layer (=4). syn1 are the weights between the hidden layer and the output layer. It is a 4x1 matrix because there are 4 nodes in the hidden layer and one output. Note that there is no bias term feeding the output layer in this example. The weights are initially generated randomly because optimization tends not to work well when all the weights start at the same value. Note that neither of the neural networks shown in the video describe the example. 
+# Now we intialize the weights to random values. syn0 are the weights between the input layer and the hidden layer.  
+# It is a 3x4 matrix because there are two input weights plus a bias term (=3) and four nodes in the hidden layer (=4).
+# syn1 are the weights between the hidden layer and the output layer. It is a 4x1 matrix because there are 4 nodes in 
+#the hidden layer and one output. Note that there is no bias term feeding the output layer in this example. The weights
+# are initially generated randomly because optimization tends not to work well when all the weights start at the same
+# value. Note that neither of the neural networks shown in the video describe the example. 
 
 #synapses
 
@@ -57,7 +70,8 @@ syn0 = 2*np.random.random((3,4)) - 1  # 3x4 matrix of weights ((2 inputs + 1 bia
 syn1 = 2*np.random.random((4,1)) - 1  # 4x1 matrix of weights. (4 nodes x 1 output) - no bias term in the hidden layer.
 
 
-# This is the main training loop. The output shows the evolution of the error between the model and desired. The error steadily decreases. 
+# This is the main training loop. The output shows the evolution of the error between the model and desired. The error
+# steadily decreases. 
 
 #training step
 
@@ -107,11 +121,14 @@ print("Output after training")
 print(l2)
 
 
-# See how the final output closely approximates the true output [0, 1, 1, 0]. If you increase the number of interations in the training loop (currently 60000), the final output will be even closer. 
+# See how the final output closely approximates the true output [0, 1, 1, 0]. If you increase the number of interations
+# in the training loop (currently 60000), the final output will be even closer. 
 
 
 
-#get_ipython().run_cell_magic(u'HTML', u'', u'#The following line is for embedding the YouTube video \n#   in this Jupyter Notebook. You may remove it without peril. \n<iframe width="560" height="315" src="https://www.youtube.com/embed/h3l4qz76JhQ" frameborder="0" allowfullscreen></iframe>')
+# get_ipython().run_cell_magic(u'HTML', u'', u'#The following line is for embedding the YouTube video \n#   in this
+# Jupyter Notebook. You may remove it without peril. \n
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/h3l4qz76JhQ" frameborder="0" allowfullscreen></iframe>')
 
 
 

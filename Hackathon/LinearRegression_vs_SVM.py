@@ -9,14 +9,16 @@ df = pd.read_csv('C:/Users/Josh/Downloads/AmesHousing.csv')
 #print(df.tail())
 df['SF'] = df['1st Flr SF']+df['2nd Flr SF']+df['Total Bsmt SF']
 
-df = df[['Lot Frontage',  'Lot Area','SF','Overall Qual', 'Overall Cond', 'Year Built', 'Full Bath', 'Garage Area', 'SalePrice']]
+df = df[['Lot Frontage',  'Lot Area','SF','Overall Qual', 'Overall Cond', 'Year Built', 'Full Bath', 'Garage Area', 
+         'SalePrice']]
 
 print(df.head())
 
 forecast_col = 'SalePrice'
 df.dropna(inplace=True)
 
-X = np.array(df[['Lot Frontage',  'Lot Area','SF','Overall Qual', 'Overall Cond', 'Year Built', 'Full Bath', 'Garage Area']])
+X = np.array(df[['Lot Frontage',  'Lot Area','SF','Overall Qual', 'Overall Cond', 'Year Built', 'Full Bath', 
+                 'Garage Area']])
 y = np.array(df['SalePrice'])
 
 X = preprocessing.scale(X)
